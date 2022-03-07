@@ -43,6 +43,9 @@ const config = {
         }),
     ],
     resolve: {
+        alias: {
+            components: path.resolve(__dirname, './src/components'),
+        },
         extensions: ['.tsx', '.ts', '.js'],
     },
 };

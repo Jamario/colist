@@ -7,12 +7,10 @@ const isDevelopment = env === 'development';
 
 const config = require(isDevelopment
     ? '../webpack.dev.js'
-    : '../webpack.config.js');
+    : '../webpack.prod.js');
 const compiler = webpack(config);
 
 const app = express();
-
-console.log('environment', env);
 
 if (isDevelopment) {
     app.use(

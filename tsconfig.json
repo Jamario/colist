@@ -9,7 +9,12 @@
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
-        "jsx": "react"
+        "jsx": "react",
+        "noEmit": true,
+        "isolatedModules": true,
+        "paths": {
+            "components/*": ["./src/components/*"]
+        }
     },
     "include": ["./src/**/*"]
 }

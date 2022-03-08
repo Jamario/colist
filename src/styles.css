@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+* {
     box-sizing: border-box;
-    min-height: 100vh;
+}
+
+html,
+body,
+#app {
+    height: 100%;
 }

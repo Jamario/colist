@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
+import IntroLayout from 'components/IntroLayout';
 import Input from 'components/Input';
 
 type FormData = {
@@ -15,14 +17,34 @@ export default function Login(): JSX.Element {
         formState: { errors },
     } = useForm<FormData>();
 
-    console.log('errors', errors);
     const onSubmit = () => console.log('formdata');
+    const validateEmail = (value: string) => {
+        console.log('value', value);
+        return true;
+    };
+
     return (
-        <div className='flex border border-black'>
+        <IntroLayout>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input label='Email' placeholder='Email' {...register('email')} />
-                <Input label='Password' placeholder='Password' {...register('password')} />
+                <Input
+                    label='Email'
+                    placeholder='Email'
+                    {...register('email', { required: 'Field cannot be empty', validate: validateEmail })}
+                    error={!!errors.email}
+                    errorMessage={errors.email?.message || ''}
+                />
+                <Input
+                    label='Password'
+                    placeholder='Password'
+                    {...register('password', { required: 'Field cannot be empty' })}
+                    error={!!errors.password}
+                    errorMessage={errors.password?.message || ''}
+                />
+                <button type='submit' className='bg-gray-100 p-2'>
+                    Login
+                </button>
+                <Link to='/register'>Register</Link>
             </form>
-        </div>
+        </IntroLayout>
     );
 }

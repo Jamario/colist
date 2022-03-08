@@ -10,7 +10,7 @@ export default function AppRoutes(): JSX.Element {
         <Router>
             <Routes>
                 <Route path='/' element={<Login />} />
-                <Route path='' element={<Register />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
         </Router>
     );
